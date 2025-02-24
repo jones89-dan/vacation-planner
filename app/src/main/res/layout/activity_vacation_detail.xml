@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.VacationDetail">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="top"
+        android:padding="16dp">
+
+        <ImageButton
+            android:id="@+id/buttonBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_arrow_back_ios_new_24"
+            android:background="?attr/selectableItemBackground"
+            android:contentDescription="Go Back"
+            android:padding="8dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="top|center_horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vacation Details"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewTitleLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Vacation Title"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edit_vacation_title_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter vacation title"
+            android:textSize="16sp"
+            android:background="@android:drawable/editbox_background"
+            android:padding="10dp"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/textViewPlaceLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Hotel/Place"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edit_vacation_hotel_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter hotel or place"
+            android:textSize="16sp"
+            android:background="@android:drawable/editbox_background"
+            android:padding="10dp"
+            android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/editTextStartDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select start date"
+                android:focusable="false"
+                android:clickable="true"
+                android:inputType="none"
+                android:textSize="16sp"
+                android:paddingTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vacation Start Date" />
+
+
+            <EditText
+                android:id="@+id/editTextEndDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select end date"
+                android:focusable="false"
+                android:clickable="true"
+                android:inputType="none"
+                android:textSize="16sp"
+                android:paddingTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vacation End Date" />
+
+        <CheckBox
+            android:id="@+id/checkboxScheduleNotification"
+            android:layout_width="wrap_content"
+            android:layout_height="81dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:text="Schedule Notification"
+            android:textSize="16sp" />
+
+
+        <Button
+            android:id="@+id/button_edit_vacation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save Changes"
+            android:textSize="16sp"
+            android:padding="12dp"
+            android:layout_marginTop="24dp" />
+
+        <Button
+            android:id="@+id/button_delete_vacation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:textSize="16sp"
+            android:padding="12dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@android:color/holo_red_light"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Share vacation details"
+            android:textSize="16sp"
+            android:paddingTop="50dp"
+            android:paddingBottom="10dp"/>
+
+        <ImageButton
+            android:id="@+id/shareVacation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_content_copy_24"
+            android:background="?attr/selectableItemBackground"
+            android:contentDescription="Share Vacation"
+            android:padding="8dp"/>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
