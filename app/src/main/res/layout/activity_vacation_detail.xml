@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/baseline_arrow_back_ios_new_24"
             android:background="?attr/selectableItemBackground"
-            android:contentDescription="Go Back"
+            android:contentDescription="@string/go_back_vac_detail"
             android:padding="8dp"/>
 
     </LinearLayout>
@@ -34,7 +34,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vacation Details"
+            android:text="@string/vacation_details"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Vacation Title"
+            android:text="@string/vacation_title_detail"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -51,7 +51,9 @@
             android:id="@+id/edit_vacation_title_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter vacation title"
+            android:hint="@string/enter_vacation_title"
+            android:importantForAutofill="no"
+            android:inputType="text"
             android:textSize="16sp"
             android:background="@android:drawable/editbox_background"
             android:padding="10dp"
@@ -62,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Hotel/Place"
+            android:text="@string/hotel_place_detail"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -70,7 +72,9 @@
             android:id="@+id/edit_vacation_hotel_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter hotel or place"
+            android:hint="@string/enter_hotel_or_place"
+            android:importantForAutofill="no"
+            android:inputType="text"
             android:textSize="16sp"
             android:background="@android:drawable/editbox_background"
             android:padding="10dp"
@@ -80,34 +84,36 @@
                 android:id="@+id/editTextStartDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Select start date"
+                android:autofillHints="no"
+                android:hint="@string/select_start_date"
                 android:focusable="false"
                 android:clickable="true"
-                android:inputType="none"
+                android:inputType="date"
                 android:textSize="16sp"
                 android:paddingTop="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vacation Start Date" />
+                android:text="@string/vacation_start_date" />
 
 
             <EditText
                 android:id="@+id/editTextEndDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Select end date"
+                android:hint="@string/select_end_date"
                 android:focusable="false"
                 android:clickable="true"
-                android:inputType="none"
+                android:importantForAutofill="no"
+                android:inputType="date"
                 android:textSize="16sp"
                 android:paddingTop="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vacation End Date" />
+                android:text="@string/vacation_end_date" />
 
         <CheckBox
             android:id="@+id/checkboxScheduleNotification"
@@ -115,7 +121,7 @@
             android:layout_height="81dp"
             android:layout_gravity="center"
             android:padding="10dp"
-            android:text="Schedule Notification"
+            android:text="@string/schedule_notification_vac_detail"
             android:textSize="16sp" />
 
 
@@ -123,7 +129,7 @@
             android:id="@+id/button_edit_vacation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Save Changes"
+            android:text="@string/save_changes_vac_detail"
             android:textSize="16sp"
             android:padding="12dp"
             android:layout_marginTop="24dp" />
@@ -132,7 +138,7 @@
             android:id="@+id/button_delete_vacation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Delete"
+            android:text="@string/delete_vac"
             android:textSize="16sp"
             android:padding="12dp"
             android:layout_marginTop="24dp"
@@ -141,7 +147,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Share vacation details"
+            android:text="@string/share_vacation_details"
             android:textSize="16sp"
             android:paddingTop="50dp"
             android:paddingBottom="10dp"/>
@@ -152,7 +158,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/baseline_content_copy_24"
             android:background="?attr/selectableItemBackground"
-            android:contentDescription="Share Vacation"
+            android:contentDescription="@string/share_vacation"
             android:padding="8dp"/>
 
     </LinearLayout>

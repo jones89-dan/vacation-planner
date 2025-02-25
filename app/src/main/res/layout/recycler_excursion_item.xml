@@ -32,7 +32,7 @@
         android:id="@+id/buttonEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View/Edit"
+        android:text="@string/view_edit"
         android:padding="8dp"/>
 
 
