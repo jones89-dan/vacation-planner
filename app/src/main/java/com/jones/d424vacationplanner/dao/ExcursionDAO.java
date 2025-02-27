@@ -5,6 +5,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 
 import com.jones.d424vacationplanner.entitities.Excursion;
+import com.jones.d424vacationplanner.entitities.Vacation;
 
 import java.util.Date;
 import java.util.List;
@@ -28,5 +29,9 @@ public interface ExcursionDAO {
 
     @Query("DELETE FROM excursions WHERE id = :id")
     void deleteExcursionById(int id);
+
+    // Vacation search query
+    @Query("SELECT * FROM excursions WHERE title LIKE :keyword")
+    List<Excursion> searchExcursions(String keyword);
 
 }

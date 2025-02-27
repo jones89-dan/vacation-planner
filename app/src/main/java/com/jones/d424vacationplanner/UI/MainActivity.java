@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         // Find the button by its ID
         Button createVacationLink = findViewById(R.id.vacation_page_link);
         Button listVacationsLink = findViewById(R.id.list_vacation_page_link);
+        Button searchLink = findViewById(R.id.search_page_link);
 
         // Set up the create vacation button's click listener
         createVacationLink.setOnClickListener(new View.OnClickListener() {
@@ -43,12 +44,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Set up the create vacation button's click listener
+        // Set up the list vacation button's click listener
         listVacationsLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Navigate to the create Vacation Page
                 Intent intent = new Intent(MainActivity.this, ListVacations.class);
+                startActivity(intent);
+            }
+        });
+
+        // Set up the search button's click listener
+        searchLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Navigate to the create Vacation Page
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
                 startActivity(intent);
             }
         });

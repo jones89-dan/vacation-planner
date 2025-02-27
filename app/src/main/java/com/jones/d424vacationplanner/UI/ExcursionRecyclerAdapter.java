@@ -37,7 +37,6 @@ public class ExcursionRecyclerAdapter extends RecyclerView.Adapter<ExcursionRecy
     // Define the excursion view holder details and where values will be stored
     public static class ExcursionViewHolder extends RecyclerView.ViewHolder {
         TextView textViewTitle, textViewDate, buttonEdit;
-        Spinner spinnerNavigation;
 
         public ExcursionViewHolder(View itemView) {
             super(itemView);

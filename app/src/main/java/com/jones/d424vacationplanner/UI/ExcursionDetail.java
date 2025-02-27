@@ -58,7 +58,7 @@ public class ExcursionDetail extends AppCompatActivity {
         // Button to go back to previous page
         ImageButton buttonBack = findViewById(R.id.buttonBack);
         buttonBack.setOnClickListener(v -> {
-            Intent intent = new Intent(ExcursionDetail.this, ExcursionRecyclerAdapter.class);
+            Intent intent = new Intent(ExcursionDetail.this, LIstVacationExcursions.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish(); // Close current activity
@@ -132,7 +132,7 @@ public class ExcursionDetail extends AppCompatActivity {
 
             if (shouldScheduleNotification) {
                 // Schedule notifications for vacation start and end dates
-                scheduleExcursionNotification(newExcusionDate.getTime(), newTitle, "starts today!", false);
+                scheduleExcursionNotification(newExcusionDate.getTime(), newTitle, "starts today!");
             }
             // Schedule notifications for excursion date
 
@@ -238,12 +238,12 @@ public class ExcursionDetail extends AppCompatActivity {
 
     // Schedule the excursion notification using alarm manager
     @SuppressLint("ScheduleExactAlarm")
-    private void scheduleExcursionNotification(long triggerTime, String excursionTitle, String message, boolean isVacation) {
+    private void scheduleExcursionNotification(long triggerTime, String excursionTitle, String message) {
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         Intent intent = new Intent(this, VacationNotificationReceiver.class);
         intent.putExtra("title", excursionTitle);
         intent.putExtra("message", message);
-        intent.putExtra("isVacation", isVacation);
+        intent.putExtra("isVacation", false);
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(
                 this, (int) triggerTime, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);

@@ -153,7 +153,7 @@ public class CreateExcursion extends AppCompatActivity {
                 // Save the Excursion
                 db.excursionDAO().insert(newExcursion);
                 runOnUiThread(() -> Toast.makeText(CreateExcursion.this, "Excursion Saved!", Toast.LENGTH_SHORT).show());
-                Intent intent = new Intent(CreateExcursion.this, ExcursionRecyclerAdapter.class);
+                Intent intent = new Intent(CreateExcursion.this, LIstVacationExcursions.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
 

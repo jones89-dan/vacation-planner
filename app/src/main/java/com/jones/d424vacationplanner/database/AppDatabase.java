@@ -13,7 +13,7 @@ import com.jones.d424vacationplanner.entitities.Excursion;
 import com.jones.d424vacationplanner.entitities.Vacation;
 
 // The details for connecting to the room database
-@Database(entities = {Vacation.class, Excursion.class}, version = 4, exportSchema = false)
+@Database(entities = {Vacation.class, Excursion.class}, version = 5, exportSchema = false)
 @TypeConverters(Converters.class)
 public abstract class AppDatabase extends RoomDatabase {
 

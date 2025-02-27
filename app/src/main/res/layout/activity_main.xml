@@ -41,14 +41,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:text="@string/create_a_vacation" />
+                android:text="@string/create_a_vacation"
+                android:layout_margin="10dp"/>
 
             <Button
                 android:id="@+id/list_vacation_page_link"
                 android:layout_width="147dp"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:text="@string/list_vacations" />
+                android:text="@string/list_vacations"
+                android:layout_margin="10dp"/>
+
+            <Button
+                android:id="@+id/search_page_link"
+                android:layout_width="147dp"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="@string/search_link"
+                android:layout_margin="10dp"/>
         </LinearLayout>
     </LinearLayout>
 

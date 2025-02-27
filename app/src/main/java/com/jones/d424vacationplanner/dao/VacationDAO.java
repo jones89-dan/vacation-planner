@@ -48,4 +48,8 @@ public interface VacationDAO {
         }
         deleteVacation(vacation);
     }
+
+    // Vacation search query
+    @Query("SELECT * FROM vacations WHERE title LIKE :keyword OR place LIKE :keyword")
+    List<Vacation> searchVacations(String keyword);
 }

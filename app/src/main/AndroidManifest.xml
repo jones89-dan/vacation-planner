@@ -16,7 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.D308VacationPlanner"
         tools:targetApi="31">
-
+        <activity
+            android:name=".UI.SearchActivity"
+            android:exported="false" />
         <activity
             android:name=".UI.ExcursionDetail"
             android:exported="false" />
