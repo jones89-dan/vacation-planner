@@ -17,6 +17,7 @@ public class ExcursionSearch extends Search<Excursion> {
         this.excursionDao = excursionDao;
     }
 
+    // Part B - Polymorphism - Child class overrides parent class method, performSearch
     // Override from the parent class the parent class
     @Override
     public void performSearch(String keyword, SearchCallback<Excursion> callback) {

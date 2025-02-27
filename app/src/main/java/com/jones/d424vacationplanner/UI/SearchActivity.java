@@ -24,6 +24,7 @@ import com.jones.d424vacationplanner.database.AppDatabase;
 import com.jones.d424vacationplanner.entitities.Excursion;
 import com.jones.d424vacationplanner.entitities.Vacation;
 import com.jones.d424vacationplanner.search.ExcursionSearch;
+import com.jones.d424vacationplanner.search.Search;
 import com.jones.d424vacationplanner.search.VacationSearch;
 
 import java.util.ArrayList;
@@ -43,7 +44,6 @@ public class SearchActivity extends AppCompatActivity {
     private ExecutorService executorService = Executors.newSingleThreadExecutor();
     private VacationSearch vacationSearch;
     private ExcursionSearch excursionSearch;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,10 +72,6 @@ public class SearchActivity extends AppCompatActivity {
         // Set click listener for search button
         buttonSearch.setOnClickListener(v -> performSearch());
 
-        // Initialize the Vacation and Search classes
-        vacationSearch = new VacationSearch(AppDatabase.getInstance(this).vacationDAO());
-        excursionSearch = new ExcursionSearch(AppDatabase.getInstance(this).excursionDAO());
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -83,7 +79,14 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
 
+    // Part B - Polymorphism - Use the Radio button to run VacationSearch or Excursion Search.
+    // Use the generic performSearch that is overriding from the parent search class.
     private void performSearch() {
+        Search<?> searchType = null;
+
+        // Initialize the Vacation and Excursion search classes
+        vacationSearch = new VacationSearch(AppDatabase.getInstance(this).vacationDAO());
+        excursionSearch = new ExcursionSearch(AppDatabase.getInstance(this).excursionDAO());
         // Get the search query from the EditText
         String keyword = editTextSearch.getText().toString().trim();
 
@@ -91,26 +94,18 @@ public class SearchActivity extends AppCompatActivity {
         int selectedRadioId = radioGroupSearchType.getCheckedRadioButtonId();
         if (selectedRadioId == R.id.radioVacation) {
             // Search for Vacations
-            searchVacations(keyword);
+            searchType = vacationSearch;
         } else if (selectedRadioId == R.id.radioExcursion) {
             // Search for Excursions
-            searchExcursions(keyword);
+            searchType = excursionSearch;
+        }
+
+        if (searchType != null) {
+            searchType.performSearch(keyword, results -> runOnUiThread(() -> {
+                adapter.updateResults(results);
+                textViewNoResults.setVisibility(results.isEmpty() ? View.VISIBLE : View.GONE);
+            }));
         }
     }
 
-    // Vacation search, return results to the SearchResultsAdapter
-    private void searchVacations(String keyword) {
-        vacationSearch.performSearch(keyword, results -> runOnUiThread(() -> {
-            adapter.updateResults(results);
-            textViewNoResults.setVisibility(results.isEmpty() ? View.VISIBLE : View.GONE);
-        }));
-    }
-
-    // Excursion search, return results to the SearchResultsAdapter
-    private void searchExcursions(String keyword) {
-        excursionSearch.performSearch(keyword, results -> runOnUiThread(() -> {
-            adapter.updateResults(results);
-            textViewNoResults.setVisibility(results.isEmpty() ? View.VISIBLE : View.GONE);
-        }));
-    }
 }

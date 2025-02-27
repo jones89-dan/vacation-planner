@@ -16,6 +16,7 @@ public class VacationSearch extends Search<Vacation>{
     }
 
 
+    // Part B - Polymorphism - Child class overrides parent class method, performSearch
     // Override from the parent class the parent class
     @Override
     public void performSearch(String keyword, SearchCallback<Vacation> callback) {

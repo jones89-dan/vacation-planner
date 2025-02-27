@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-// Part B - Inheritance Parent class for VacationSearch and ExcursionSearch
+// Part B - Inheritance - Parent class for VacationSearch and ExcursionSearch
+// Part B - Polymorphism - Generic abstract class with a generic method, performSearch
 public abstract class Search<T>{
     protected List<T> items;
     protected ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -17,7 +18,7 @@ public abstract class Search<T>{
         void onResults(List<T> results);
     }
 
-    abstract void performSearch(String keyword, SearchCallback<T> callback);
+    public abstract void performSearch(String keyword, SearchCallback<T> callback);
 
 
 }
