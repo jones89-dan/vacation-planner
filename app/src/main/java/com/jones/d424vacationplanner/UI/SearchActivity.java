@@ -23,6 +23,7 @@ import com.jones.d424vacationplanner.dao.VacationDAO;
 import com.jones.d424vacationplanner.database.AppDatabase;
 import com.jones.d424vacationplanner.entitities.Excursion;
 import com.jones.d424vacationplanner.entitities.Vacation;
+import com.jones.d424vacationplanner.search.ExcursionSearch;
 import com.jones.d424vacationplanner.search.VacationSearch;
 
 import java.util.ArrayList;
@@ -36,12 +37,13 @@ public class SearchActivity extends AppCompatActivity {
     private Button buttonSearch;
     private RadioButton radioVacation, radioExcursion;
     private RecyclerView recyclerViewResults;
-    private VacationDAO vacationDao;
-    private ExcursionDAO excursionDao;
     private RadioGroup radioGroupSearchType;
     private SearchResultsAdapter adapter;
     private TextView textViewNoResults;
     private ExecutorService executorService = Executors.newSingleThreadExecutor();
+    private VacationSearch vacationSearch;
+    private ExcursionSearch excursionSearch;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,15 +60,9 @@ public class SearchActivity extends AppCompatActivity {
         radioExcursion = findViewById(R.id.radioExcursion);
         textViewNoResults = findViewById(R.id.textViewNoResults);
 
-
         // Button to go back to main page
         ImageButton buttonBack = findViewById(R.id.buttonBack);
         buttonBack.setOnClickListener(v -> finish());
-
-        // Initialize the DAO and VacationSearch
-        // Get DAO instances
-        vacationDao = AppDatabase.getInstance(this).vacationDAO();
-        excursionDao = AppDatabase.getInstance(this).excursionDAO();
 
         // Initialize the RecyclerView and adapter
         recyclerViewResults.setLayoutManager(new LinearLayoutManager(this));
@@ -75,6 +71,10 @@ public class SearchActivity extends AppCompatActivity {
 
         // Set click listener for search button
         buttonSearch.setOnClickListener(v -> performSearch());
+
+        // Initialize the Vacation and Search classes
+        vacationSearch = new VacationSearch(AppDatabase.getInstance(this).vacationDAO());
+        excursionSearch = new ExcursionSearch(AppDatabase.getInstance(this).excursionDAO());
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -100,31 +100,17 @@ public class SearchActivity extends AppCompatActivity {
 
     // Vacation search, return results to the SearchResultsAdapter
     private void searchVacations(String keyword) {
-        executorService.execute(() -> {
-            List<Vacation> results = vacationDao.searchVacations("%" + keyword + "%");
-            runOnUiThread(() -> {
-                adapter.updateResults(results);
-                if (results.isEmpty()) {
-                    textViewNoResults.setVisibility(View.VISIBLE);
-                } else {
-                    textViewNoResults.setVisibility(View.GONE);
-                }
-            });
-        });
+        vacationSearch.performSearch(keyword, results -> runOnUiThread(() -> {
+            adapter.updateResults(results);
+            textViewNoResults.setVisibility(results.isEmpty() ? View.VISIBLE : View.GONE);
+        }));
     }
 
     // Excursion search, return results to the SearchResultsAdapter
     private void searchExcursions(String keyword) {
-        executorService.execute(() -> {
-            List<Excursion> results = excursionDao.searchExcursions("%" + keyword + "%");
-            runOnUiThread(() -> {
-                adapter.updateResults(results);
-                if (results.isEmpty()) {
-                    textViewNoResults.setVisibility(View.VISIBLE);
-                } else {
-                    textViewNoResults.setVisibility(View.GONE);
-                }
-            });
-        });
+        excursionSearch.performSearch(keyword, results -> runOnUiThread(() -> {
+            adapter.updateResults(results);
+            textViewNoResults.setVisibility(results.isEmpty() ? View.VISIBLE : View.GONE);
+        }));
     }
 }
