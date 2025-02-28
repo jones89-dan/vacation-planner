@@ -39,11 +39,11 @@ public class SearchResultsAdapter<T> extends RecyclerView.Adapter<SearchResultsA
         // Format for Vacation/Excursion results
         if (item instanceof Vacation) {
             Vacation vacation = (Vacation) item;
-            holder.textViewTitle.setText("Title: " + vacation.title);
+            holder.textViewTitle.setText("Title: " + vacation.getTitle());
             holder.textViewDate.setText("Date Added: " + formatDate(vacation.getDateCreated()));
         } else if (item instanceof Excursion) {
             Excursion excursion = (Excursion) item;
-            holder.textViewTitle.setText("Title: " + excursion.title);
+            holder.textViewTitle.setText("Title: " + excursion.getTitle());
             holder.textViewDate.setText("Date Added: " + formatDate(excursion.getDateCreated()));
         }
     }

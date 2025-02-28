@@ -16,15 +16,48 @@ import java.util.Date;
                 onDelete = ForeignKey.RESTRICT))
 
 public class Excursion {
-    // details of the excursion.
+    //Part B - Encapsulation - Set object attributes to private and implement getter and setter methods
     @PrimaryKey(autoGenerate = true)
-    public int id;
-    public int vacationId; // Foreign key for vacations table
-    public String title;
-    public Date excursionDate;
+    private int id;
+    private int vacationId; // Foreign key for vacations table
+    private String title;
+    private Date excursionDate;
 
     @ColumnInfo(name = "date_created")
     private long dateCreated;
+
+    public Date getExcursionDate() {
+        return excursionDate;
+    }
+
+    public void setExcursionDate(Date excursionDate) {
+        this.excursionDate = excursionDate;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getVacationId() {
+        return vacationId;
+    }
+
+    public void setVacationId(int vacationId) {
+        this.vacationId = vacationId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
     public Excursion(int vacationId, String title, Date excursionDate) {
         this.vacationId = vacationId;

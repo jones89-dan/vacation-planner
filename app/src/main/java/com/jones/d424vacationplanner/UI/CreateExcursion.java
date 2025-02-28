@@ -147,7 +147,7 @@ public class CreateExcursion extends AppCompatActivity {
             Vacation vacation = db.vacationDAO().getVacationById(vacationId);
 
             // Validate the excursion date is during vacation
-            if (selectedExcursionDate.before(vacation.startDate) || selectedExcursionDate.after(vacation.endDate)) {
+            if (selectedExcursionDate.before(vacation.getStartDate()) || selectedExcursionDate.after(vacation.getEndDate())) {
                         runOnUiThread(() -> Toast.makeText(CreateExcursion.this, "Excursion date must be within the vacation dates!", Toast.LENGTH_LONG).show());
             } else {
                 // Save the Excursion

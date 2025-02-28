@@ -92,8 +92,8 @@ public class ExcursionDetail extends AppCompatActivity {
             Excursion excursion = db.excursionDAO().getExcursionById(excursionId);
             runOnUiThread(() -> {
                 if (excursion != null) {
-                    String formattedExcursionDate = formatDate(excursion.excursionDate);
-                    editTitle.setText(excursion.title);
+                    String formattedExcursionDate = formatDate(excursion.getExcursionDate());
+                    editTitle.setText(excursion.getTitle());
                     editExcursionDate.setText(formattedExcursionDate);
 
                 } else {
@@ -154,7 +154,7 @@ public class ExcursionDetail extends AppCompatActivity {
                 }
 
                 // Validate the excursion date is during vacation
-                if (newExcusionDate.before(vacation.startDate) || newExcusionDate.after(vacation.endDate)) {
+                if (newExcusionDate.before(vacation.getStartDate()) || newExcusionDate.after(vacation.getEndDate())) {
                     runOnUiThread(() -> Toast.makeText(ExcursionDetail.this, "Excursion date must be within the vacation dates!", Toast.LENGTH_LONG).show());
                     return;
                 }

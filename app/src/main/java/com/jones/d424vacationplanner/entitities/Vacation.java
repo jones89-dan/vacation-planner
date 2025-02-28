@@ -9,14 +9,14 @@ import java.util.Date;
 // Vacation entity
 @Entity(tableName = "vacations")
 public class Vacation {
-
+    //Part B - Encapsulation - Set object attributes to private and implement getter and setter methods
     @PrimaryKey(autoGenerate = true)
-    public int id;
+    private int id;
+    private String title;
+    private String place;
+    private Date startDate;
+    private Date endDate;
 
-    public String title;
-    public String place;
-    public Date startDate;
-    public Date endDate;
     @ColumnInfo(name = "date_created")
     private long dateCreated;
 
@@ -31,6 +31,46 @@ public class Vacation {
     public boolean matchesSearch(String keyword) {
         return title.toLowerCase().contains(keyword.toLowerCase()) ||
                 place.toLowerCase().contains(keyword.toLowerCase());
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
     public long getDateCreated() {

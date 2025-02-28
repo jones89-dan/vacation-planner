@@ -87,11 +87,11 @@ public class VacationDetail extends AppCompatActivity {
             runOnUiThread(() -> {
                 if (vacation != null) {
 
-                    String formattedStartDate = formatDate(vacation.startDate);
-                    String formattedEndDate = formatDate(vacation.endDate);
+                    String formattedStartDate = formatDate(vacation.getStartDate());
+                    String formattedEndDate = formatDate(vacation.getEndDate());
 
-                    editTitle.setText(vacation.title);
-                    editPlace.setText(vacation.place);
+                    editTitle.setText(vacation.getTitle());
+                    editPlace.setText(vacation.getPlace());
                     editTextStartDate.setText(formattedStartDate);
                     editTextEndDate.setText(formattedEndDate);
                 } else {

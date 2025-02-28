@@ -61,11 +61,11 @@ public class VacationRecyclerAdapter extends RecyclerView.Adapter<VacationRecycl
     public void onBindViewHolder(@NonNull VacationViewHolder holder, int position) {
         Vacation vacation = vacationList.get(position);
 
-        String formattedStartDate = formatDate(vacation.startDate);
-        String formattedEndDate = formatDate(vacation.endDate);
+        String formattedStartDate = formatDate(vacation.getStartDate());
+        String formattedEndDate = formatDate(vacation.getEndDate());
 
-        holder.textViewTitle.setText("Title: " + vacationList.get(position).title);
-        holder.textViewPlace.setText("Place : " + vacationList.get(position).place);
+        holder.textViewTitle.setText("Title: " + vacationList.get(position).getTitle());
+        holder.textViewPlace.setText("Place : " + vacationList.get(position).getPlace());
         holder.textViewStartDate.setText("Start: " + formattedStartDate);
         holder.textViewEndDate.setText("End: " + formattedEndDate);
 
@@ -111,11 +111,11 @@ public class VacationRecyclerAdapter extends RecyclerView.Adapter<VacationRecycl
         switch (pos) {
             case 1: // View Details/Edit
                 intent = new Intent(context, VacationDetail.class);
-                intent.putExtra("id", vacation.id);
+                intent.putExtra("id", vacation.getId());
                 break;
             case 2: // Excursions
                 intent = new Intent(context, LIstVacationExcursions.class);
-                intent.putExtra("id", vacation.id);
+                intent.putExtra("id", vacation.getId());
                 break;
         }
 

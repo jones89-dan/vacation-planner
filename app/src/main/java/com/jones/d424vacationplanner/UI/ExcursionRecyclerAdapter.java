@@ -60,15 +60,15 @@ public class ExcursionRecyclerAdapter extends RecyclerView.Adapter<ExcursionRecy
         Excursion excursion = excursionList.get(position);
 
         // Format Excursion Date
-        String formatedExcursionDate = formatDate(excursion.excursionDate);
+        String formatedExcursionDate = formatDate(excursion.getExcursionDate());
 
-        holder.textViewTitle.setText("Title: " + excursion.title);
+        holder.textViewTitle.setText("Title: " + excursion.getTitle());
         holder.textViewDate.setText("Date: " + formatedExcursionDate);
 
         // Set Click Listener for Edit Button
         holder.buttonEdit.setOnClickListener(v -> {
             Intent intent = new Intent(context, ExcursionDetail.class);
-            intent.putExtra("id", excursion.id); // Pass Excursion ID
+            intent.putExtra("id", excursion.getId()); // Pass Excursion ID
             intent.putExtra("vacationId", vacationId); // Pass VacationID
             context.startActivity(intent);
         });

@@ -43,7 +43,7 @@ public interface VacationDAO {
 
     @Transaction
     default void deleteVacationIfNoExcursions(Vacation vacation) {
-        if (getExcursionCount(vacation.id) > 0) {
+        if (getExcursionCount(vacation.getId()) > 0) {
             throw new SQLiteConstraintException("Cannot delete vacation with excursions.");
         }
         deleteVacation(vacation);
