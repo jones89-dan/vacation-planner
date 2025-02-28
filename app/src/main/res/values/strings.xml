@@ -50,4 +50,6 @@
     <string name="share_vacation">Share Vacation</string>
     <string name="view_edit">View/Edit</string>
     <string name="search_link">Search</string>
+    <string name="download_report">Download Report</string>
+    <string name="download_report_text">Download Report</string>
 </resources>

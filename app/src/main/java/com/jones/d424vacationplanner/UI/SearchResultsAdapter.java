@@ -25,6 +25,11 @@ public class SearchResultsAdapter<T> extends RecyclerView.Adapter<SearchResultsA
         this.searchResults = searchResults;
     }
 
+    public List<T> getSearchResults() {
+        return searchResults;
+    }
+
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
