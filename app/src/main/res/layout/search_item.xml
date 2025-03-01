@@ -6,6 +6,8 @@
     android:orientation="horizontal"
     android:gravity="center_vertical">
 
+    <!-- A user-friendly, functional GUI -->
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
