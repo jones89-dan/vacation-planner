@@ -78,7 +78,9 @@ public class SearchActivity extends AppCompatActivity {
         ImageButton buttonBack = findViewById(R.id.buttonBack);
         buttonBack.setOnClickListener(v -> finish());
 
+
         // Initialize the RecyclerView and adapter
+        // Scalability - Recycler view allows dynamic population
         recyclerViewResults.setLayoutManager(new LinearLayoutManager(this));
         adapter = new SearchResultsAdapter<>(new ArrayList<>());
         recyclerViewResults.setAdapter(adapter);

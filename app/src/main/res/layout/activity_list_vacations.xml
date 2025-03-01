@@ -38,10 +38,12 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
+        <!-- Scalability - Recycler view allows dynamic result population and scrolling -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerVacationView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:overScrollMode="always"
             android:padding="16dp"/>
 
     </LinearLayout>

@@ -69,6 +69,7 @@ public class LIstVacationExcursions extends AppCompatActivity {
         }
 
         // Initialize RecyclerView
+        // Scalability - Recycler view allows dynamic population
         recyclerViewExcursions = findViewById(R.id.recyclerViewExcursions);
         recyclerViewExcursions.setLayoutManager(new LinearLayoutManager(this));
 

@@ -55,10 +55,12 @@
             android:contentDescription="@string/add_excursion_vac_ex"
             android:padding="8dp"/>
 
+        <!-- Scalability - Recycler view allows dynamic result population and scrolling -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewExcursions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:overScrollMode="always"
             android:layout_marginTop="20dp" />
 
     </LinearLayout>

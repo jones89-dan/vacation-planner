@@ -132,10 +132,12 @@
 
 
         <!-- Results List -->
+        <!-- Scalability - Recycler view allows dynamic result population and scrolling-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewResults"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:overScrollMode="always"
             android:paddingTop="8dp" />
 
     </LinearLayout>

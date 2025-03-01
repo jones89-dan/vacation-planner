@@ -44,6 +44,7 @@ public class ListVacations extends AppCompatActivity {
         buttonBack.setOnClickListener(v -> finish());
 
         // Recycler View
+        // Scalability - Recycler view allows dynamic population
         recyclerView = findViewById(R.id.recyclerVacationView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
