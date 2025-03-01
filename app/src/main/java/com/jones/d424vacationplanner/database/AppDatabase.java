@@ -12,6 +12,7 @@ import com.jones.d424vacationplanner.dao.VacationDAO;
 import com.jones.d424vacationplanner.entitities.Excursion;
 import com.jones.d424vacationplanner.entitities.Vacation;
 
+// Database component with the functionality to securely add, modify, and delete the data
 // The details for connecting to the room database
 @Database(entities = {Vacation.class, Excursion.class}, version = 5, exportSchema = false)
 @TypeConverters(Converters.class)

@@ -10,6 +10,8 @@ import com.jones.d424vacationplanner.entitities.Vacation;
 import java.util.Date;
 import java.util.List;
 // DAO for Excursions
+// Database component with the functionality to securely add, modify, and delete the data
+
 @Dao
 public interface ExcursionDAO {
     @Insert

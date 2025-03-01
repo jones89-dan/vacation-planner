@@ -14,6 +14,7 @@ import com.jones.d424vacationplanner.entitities.Vacation;
 import java.util.Date;
 import java.util.List;
 
+// Database component with the functionality to securely add, modify, and delete the data
 // Vacation DAO
 @Dao
 public interface VacationDAO {
