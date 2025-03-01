@@ -107,6 +107,12 @@ public class SearchActivity extends AppCompatActivity {
         // Get the search query from the EditText
         String keyword = editTextSearch.getText().toString().trim();
 
+        // Security Feature - Ensure user input is sanitary before proceeding.
+        if (!isValidInput(keyword)) {
+            Toast.makeText(this, "Input contains invalid characters", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // Get the selected search type, Vacation or Excursion
         int selectedRadioId = radioGroupSearchType.getCheckedRadioButtonId();
         if (selectedRadioId == R.id.radioVacation) {
@@ -176,5 +182,9 @@ public class SearchActivity extends AppCompatActivity {
 
         SimpleDateFormat outputFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
         return outputFormat.format(createdDate); // Format to only MM/dd/yyyy
+    }
+
+    public boolean isValidInput(String input) {
+        return input.isEmpty() || input.matches("^[a-zA-Z0-9 ]+$");
     }
 }

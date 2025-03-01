@@ -112,12 +112,23 @@ public class VacationDetail extends AppCompatActivity {
             Date newStartDate;
             Date newEndDate;
 
-            // Check for empty title or place
+            // Input Validation - Check for empty title or place
             if (newTitle.isEmpty() || newPlace.isEmpty()) {
-                Toast.makeText(this, "Fields cannot be empty!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Title and Place fields cannot be empty!", Toast.LENGTH_SHORT).show();
                 return;
             }
 
+            // Security Feature - Ensure user input is sanitary before proceeding.
+            if (!isValidInput(newTitle) || !isValidInput(newPlace)) {
+                Toast.makeText(this, "Input contains invalid characters", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Input Validation - Check for empty dates
+            if (newStartDateStr.isEmpty() || newEndDateStr.isEmpty()) {
+                Toast.makeText(this, "Start Date and End Date cannot be empty!", Toast.LENGTH_SHORT).show();
+                return;
+            }
             // Try to parse into dates
             try {
                 newStartDate = dateFormat.parse(newStartDateStr);
@@ -130,6 +141,7 @@ public class VacationDetail extends AppCompatActivity {
             // B3 part D. Check if Start Date is after End Date and alert user to fix before proceeding.
             assert newStartDate != null;
 
+            // Input Validation - Check that start date is before end date
             if (newStartDate.after(newEndDate)) {
                 Toast.makeText(this, "Start date must be before end date!", Toast.LENGTH_SHORT).show();
                 return;
@@ -308,5 +320,9 @@ public class VacationDetail extends AppCompatActivity {
         ClipData clip = ClipData.newPlainText("Vacation Details", vacationDetails);
         clipboard.setPrimaryClip(clip);
         Toast.makeText(this, "Vacation details copied!", Toast.LENGTH_SHORT).show();
+    }
+
+    public boolean isValidInput(String input) {
+        return input.matches("^[a-zA-Z0-9 ]+$");
     }
 }

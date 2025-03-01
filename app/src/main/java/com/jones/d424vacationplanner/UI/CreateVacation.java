@@ -134,13 +134,25 @@ public class CreateVacation extends AppCompatActivity {
         String title = vacationTitle.getText().toString().trim();
         String place = vacationPlace.getText().toString().trim();
 
-        // Check for empty fields
+        // Input Validation - Check for empty title or place fields
         if (title.isEmpty() || place.isEmpty()) {
-            Toast.makeText(this, "Please enter both fields", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter both Title and Place fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Check for empty date and convert to date format if not empty.
+        // Security Feature - Ensure user input is sanitary before proceeding.
+        if (!isValidInput(title)) {
+            Toast.makeText(this, "Input contains invalid characters", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Security Feature - Ensure user input is sanitary before proceeding.
+        if (!isValidInput(place)) {
+            Toast.makeText(this, "Input contains invalid characters", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Input Validation - Check for empty start and end date and convert to date format if not empty.
         if (selectedStartDateStr.isEmpty() || selectedEndDateStr.isEmpty()) {
             Toast.makeText(this, "Please select both start and end dates", Toast.LENGTH_SHORT).show();
             return;
@@ -214,5 +226,10 @@ public class CreateVacation extends AppCompatActivity {
         if (alarmManager != null) {
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent);
         }
+    }
+
+    // Security Feature - Check for sanitary input, to prevent SQL injection
+    public boolean isValidInput(String input) {
+        return input.matches("^[a-zA-Z0-9 ]+$");
     }
 }

@@ -104,23 +104,23 @@ public class CreateExcursion extends AppCompatActivity {
         EditText excursionTitle = findViewById(R.id.excursionTitleText);
         Date selectedExcursionDate;
 
-        // Check if date is provided
-        if (selectedExcursionDateStr == null || selectedExcursionDateStr.isEmpty()) {
-            Toast.makeText(this, "Please select an excursion date", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
         // Trim extra space on the title and place
         String title = excursionTitle.getText().toString().trim();
 
-        // Check for empty fields
+        // Input validation - Check for empty fields
         if (title.isEmpty()) {
             Toast.makeText(this, "Please enter title field", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Check for empty date and convert to date format if not empty.
-        if (selectedExcursionDateStr.isEmpty()) {
+        // Security Feature - Ensure user input is sanitary before proceeding.
+       if (!isValidInput(title)) {
+           Toast.makeText(this, "Input contains invalid characters", Toast.LENGTH_SHORT).show();
+           return;
+       }
+
+        // Input Validation - Check for empty date and convert to date format if not empty.
+        if (selectedExcursionDateStr == null || selectedExcursionDateStr.isEmpty()) {
             Toast.makeText(this, "Please select excursion date", Toast.LENGTH_SHORT).show();
             return;
         } else {
@@ -146,7 +146,7 @@ public class CreateExcursion extends AppCompatActivity {
             // Get vacation to check start and end date
             Vacation vacation = db.vacationDAO().getVacationById(vacationId);
 
-            // Validate the excursion date is during vacation
+            // Input Validation - Validate the excursion date is during vacation
             if (selectedExcursionDate.before(vacation.getStartDate()) || selectedExcursionDate.after(vacation.getEndDate())) {
                         runOnUiThread(() -> Toast.makeText(CreateExcursion.this, "Excursion date must be within the vacation dates!", Toast.LENGTH_LONG).show());
             } else {
@@ -179,6 +179,11 @@ public class CreateExcursion extends AppCompatActivity {
         if (alarmManager != null) {
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent);
         }
+    }
+
+    // Security Feature - Check for sanitary input, to prevent SQL injection
+    public boolean isValidInput(String input) {
+        return input.matches("^[a-zA-Z0-9 ]+$");
     }
 
 }

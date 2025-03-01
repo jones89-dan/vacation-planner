@@ -111,9 +111,21 @@ public class ExcursionDetail extends AppCompatActivity {
             // New Excursion date object
             Date newExcusionDate;
 
-            // Check for empty title or place
+            // Input Validation - Check for empty title
             if (newTitle.isEmpty()) {
                 Toast.makeText(this, "Field cannot be empty!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Security Feature - Ensure user input is sanitary before proceeding.
+            if (!isValidInput(newTitle)) {
+                Toast.makeText(this, "Input contains invalid characters", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Input Validation - Check for empty date
+            if (newStartDateStr.isEmpty()) {
+                Toast.makeText(this, "Date cannot be empty!", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -153,7 +165,7 @@ public class ExcursionDetail extends AppCompatActivity {
                     return;
                 }
 
-                // Validate the excursion date is during vacation
+                // Input Validation - Validate the excursion date is during vacation
                 if (newExcusionDate.before(vacation.getStartDate()) || newExcusionDate.after(vacation.getEndDate())) {
                     runOnUiThread(() -> Toast.makeText(ExcursionDetail.this, "Excursion date must be within the vacation dates!", Toast.LENGTH_LONG).show());
                     return;
@@ -251,5 +263,9 @@ public class ExcursionDetail extends AppCompatActivity {
         if (alarmManager != null) {
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent);
         }
+    }
+
+    public boolean isValidInput(String input) {
+        return input.matches("^[a-zA-Z0-9 ]+$");
     }
 }
