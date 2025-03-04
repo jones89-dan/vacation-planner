@@ -5,7 +5,6 @@ import androidx.room.Insert;
 import androidx.room.Query;
 
 import com.jones.d424vacationplanner.entitities.Excursion;
-import com.jones.d424vacationplanner.entitities.Vacation;
 
 import java.util.Date;
 import java.util.List;
@@ -16,9 +15,6 @@ import java.util.List;
 public interface ExcursionDAO {
     @Insert
     void insert(Excursion excursion);
-
-    @Query("SELECT * FROM excursions")
-    List<Excursion> getAllExcursions();
 
     @Query("SELECT * FROM excursions WHERE vacationId = :vacationId")
     List<Excursion> getExcursionsByVacation(int vacationId);

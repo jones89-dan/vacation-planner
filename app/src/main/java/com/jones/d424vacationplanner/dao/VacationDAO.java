@@ -21,17 +21,11 @@ public interface VacationDAO {
     @Insert
     void insert(Vacation vacation);
 
-    @Insert
-    void insertExcursion(Excursion excursion);
-
     @Query("SELECT * FROM vacations")
     List<Vacation> getAllVacations();
 
     @Delete
     void deleteVacation(Vacation vacation);
-
-    @Query("DELETE FROM vacations WHERE id = :id")
-    void deleteVacationById(int id);
 
     @Query("SELECT COUNT(*) FROM excursions WHERE vacationId = :vacationId")
     int getExcursionCount(int vacationId);
