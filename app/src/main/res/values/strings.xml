@@ -29,8 +29,8 @@
     <string name="create_new_vacation">Create a Vacation!</string>
     <string name="vacation_title">Vacation Title</string>
     <string name="hotel_place">Hotel/Place</string>
-    <string name="pick_a_start_date">Pick a Start Date</string>
-    <string name="pick_a_end_date">Pick a End Date</string>
+    <string name="pick_a_start_date">Start Date</string>
+    <string name="pick_a_end_date">End Date</string>
     <string name="schedule_notification_new_vac">Schedule Notification</string>
     <string name="create_vacation">Create Vacation</string>
     <string name="go_back_vac_detail">Go Back</string>

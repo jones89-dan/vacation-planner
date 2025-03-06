@@ -224,7 +224,7 @@ public class CreateVacation extends AppCompatActivity {
                 this, (int) triggerTime, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         if (alarmManager != null) {
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent);
         }
     }
 
