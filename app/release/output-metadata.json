@@ -4,15 +4,15 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.jones.d308vacationplanner",
+  "applicationId": "com.jones.d424vacationplanner",
   "variantName": "release",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
       "attributes": [],
-      "versionCode": 1,
-      "versionName": "1.0",
+      "versionCode": 5,
+      "versionName": "5.0",
       "outputFile": "app-release.apk"
     }
   ],
