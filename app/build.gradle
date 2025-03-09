@@ -36,6 +36,7 @@ dependencies {
     implementation libs.constraintlayout
     implementation libs.room.common
     testImplementation libs.junit
+    testImplementation libs.core
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
 
@@ -44,4 +45,7 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:2.6.1"
     // Recycler View
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    // Testing database
+    testImplementation "androidx.room:room-testing:2.6.1"
+
 }
